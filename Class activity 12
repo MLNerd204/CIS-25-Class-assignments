@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+//put your input here
+int n = 4;
+
+// Function prototype to identify the factoril of the input
+int factorial(int n);
+
+int main()
+{
+    //if the input is positive it would output the input and the factorial of the number
+    if (n>=0){
+        cout<<"The factorial of "<<n<<" is: "<<endl;
+        cout<<factorial(n)<<endl;
+        return 0;
+    }
+    //if the input is negative it would say that is not a positive and ask to isert a positive number
+    else
+        cout<<"Not a positive number, Please enter a positive number."<<endl;
+    
+}
+// using the factorial function allows the program to calculate the factorial of the input
+int factorial(int n)
+{
+    //if the factorial ends with 0, then the program would switch to its previous calculation and return as is
+    if (n == 0)
+        return 1;
+    else
+        return (n * factorial(n-1));
+}
+
