@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdlib> //  For rand and srand
+#include <ctime> // For the time function
+using namespace std;
+
+int main(){
+    // addressing the user input
+    int UserGuess;
+    //generates a random number
+    int maxValue = 100;
+    int minValue = 1;
+    long elapseSeconds = time(0);
+    srand(elapseSeconds);
+    int SecretNumber = rand()%((maxValue-minValue)+1)+ minValue;
+    //while the UserGuess doesn't match the secret number, it would then ask for an input from the user and when inputed would tell you if your guess is higher, lower, or guessed right
+    while(UserGuess != SecretNumber){
+        cout<<"Please pick a number to guess the secret number."<<endl;
+        cin>>UserGuess;
+        if (UserGuess < SecretNumber)
+            cout<<"Too low, Try Again"<<endl;
+        else if (UserGuess > SecretNumber)
+            cout<<"Too low, Try Again"<<endl;
+        else
+            cout<<"You Got It!!!"<<endl;
+    }
+    return 0;
+}
