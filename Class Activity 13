@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<double> temperatures;
+    double temp;
+    char choice;
+
+    std::cout << "Enter temperatures (in Celsius). Type 'q' to stop entering.\n";
+
+    // Loop to collect temperatures from the user
+    while (true) {
+        std::cout << "Enter temperature: ";
+        if (std::cin >> temp) {
+            temperatures.push_back(temp);
+        } else {
+            // Check if the input was 'q' to quit
+            std::cin.clear(); // clear the error flag
+            std::cin >> choice;
+            if (choice == 'q' || choice == 'Q') {
+                break;
+            } else {
+                std::cout << "Invalid input. Please enter a valid temperature or 'q' to quit.\n";
+                std::cin.clear(); // clear the error flag for the next input
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore the rest of the line
+            }
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear the input buffer
+    }
+
+    // Calculate the average temperature
+    if (temperatures.empty()) {
+        std::cout << "No temperatures were entered.\n";
+    } else {
+        double sum = 0;
+        for (double t : temperatures) {
+            sum += t;
+        }
+        double average = sum / temperatures.size();
+        std::cout << "The average temperature is: " << average << "°C\n";
+    }
+
+    return 0;
+}
