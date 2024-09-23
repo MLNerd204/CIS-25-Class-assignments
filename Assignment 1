@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+
+void printBinary(int number) {
+    // Vector to hold binary digits
+    std::vector<int> binaryDigits;
+
+    // Edge case for zero
+    if (number == 0) {
+        std::cout << "0";
+        return;
+    }
+
+    // Convert to binary
+    while (number > 0) {
+        binaryDigits.push_back(number % 2); // Get the least significant bit
+        number /= 2; // Divide by 2
+    }
+
+    // Print in reverse order since we collected the bits from least to most significant
+    for (int i = binaryDigits.size() - 1; i >= 0; --i) {
+        std::cout << binaryDigits[i];
+    }
+}
+
+int main() {
+    int number;
+
+    std::cout << "Enter a positive integer: ";
+    std::cin >> number;
+
+    // Check if the input is positive
+    if (number < 0) {
+        std::cout << "Please enter a positive integer." << std::endl;
+        return 1; // Return with error code
+    }
+
+    std::cout << "Binary representation: ";
+    printBinary(number);
+    std::cout << std::endl;
+
+    return 0; // Success
+}
