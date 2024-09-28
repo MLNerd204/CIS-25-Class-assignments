@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+
+class Table {
+public:
+    Table(int width, int height) : width(width), height(height) {}
+
+    void findMiddle() {
+        int middleX = std::floor(width / 2.0);
+        int middleY = std::floor(height / 2.0);
+        
+        // Simulate moving the beeper to the middle
+        moveBeeper(middleX, middleY);
+    }
+
+private:
+    int width;
+    int height;
+
+    void moveBeeper(int x, int y) {
+        std::cout << "Beeper is moved to the middle point: (" << x << ", " << y << ")" << std::endl;
+    }
+};
+
+int main() {
+    int width, height;
+
+    // Get table dimensions from the user
+    std::cout << "Enter the width of the table: ";
+    std::cin >> width;
+    std::cout << "Enter the height of the table: ";
+    std::cin >> height;
+
+    // Create a Table object
+    Table table(width, height);
+
+    
+    // Find the middle point and move the beeper
+    table.findMiddle();
+
+    return 0;
+}
