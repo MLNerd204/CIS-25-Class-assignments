@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void analyzeGrades(const vector<string>& names, const vector<double>& grades);
+
+int main() {
+    vector<string> studentNames = {"Alice", "Bob", "Charlie", "Diana", "Ethan"};
+    vector<double> studentGrades = {85.5, 90.0, 78.0, 88.5, 92.0};
+    analyzeGrades(studentNames, studentGrades);
+    return 0;
+}
+
+void analyzeGrades(const vector<string>& names, const vector<double>& grades) {
+    if (names.size() != grades.size() || names.empty()) {
+        cout << "Error: Mismatched student names and grades or empty lists." << endl;
+        return;
+    }
+    double total = 0;
+    double highest = grades[0];
+    double lowest = grades[0];
+    for (double grade : grades) {
+        total += grade;
+        if (grade > highest) {
+            highest = grade;
+        }
+        if (grade < lowest) {
+            lowest = grade;
+        }
+    }
+    double average = total / grades.size();
+    cout << "Average Grade: " << average << endl;
+    cout << "Highest Grade: " << highest << endl;
+    cout << "Lowest Grade: " << lowest << endl;
+
+    cout << "Students Above Average:" << endl;
+    for (size_t i = 0; i < grades.size(); ++i) {
+        if (grades[i] > average) {
+            cout << names[i] << ": " << grades[i] << endl;
+        }
+    }
+}
